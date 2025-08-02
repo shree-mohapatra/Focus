@@ -15,8 +15,9 @@ import ChatIcon from "@mui/icons-material/Chat";
 
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import Badge from "@mui/material/Badge";
+import server from "../environment";
 
-const server_url = "http://localhost:8000";
+const server_url = server;
 
 const connections = {};
 
