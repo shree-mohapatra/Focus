@@ -50,7 +50,7 @@ export default function VideoMeetComponent() {
 
   let [message, setMessage] = useState("");
 
-  let [newMessages, setNewMessages] = useState(6);
+  let [newMessages, setNewMessages] = useState(0);
 
   let [askForUsername, setAskForUserName] = useState(true);
 
