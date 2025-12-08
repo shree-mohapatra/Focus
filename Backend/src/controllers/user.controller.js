@@ -14,8 +14,8 @@ const login = async (req, res) => {
     const user = await User.findOne({ username });
     if (!user) {
       return res
-        .status(httpStatus, NOT_FOUND)
-        .json({ message: "user not found" });
+        .status(httpStatus.NOT_FOUND)
+        .json({ message: "User Not Found" });
     }
     let isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (isPasswordCorrect) {
@@ -51,6 +51,7 @@ const register = async (req, res) => {
       password: hashedPassword,
     });
     await newUser.save();
+
     res.status(httpStatus.CREATED).json({ message: "User Registered" });
   } catch (e) {
     res.json({ message: `Something went wrong ${e}` });
