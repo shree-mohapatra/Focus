@@ -21,14 +21,29 @@ app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
-  app.set("mongo_user");
-  const connectionDb = await mongoose.connect(
-    "mongodb+srv://itishreem2004:hpjcQm87enZIJuBh@cluster0.gvbnbmz.mongodb.net/"
-  );
-  console.log(`Mongo Connected DB Host :${connectionDb.connection.host}`);
-  server.listen(app.get("port"), () => {
-    console.log("LISTENING");
-  });
+  try {
+    const mongoUrl = process.env.MONGO_URL;
+
+    if (!mongoUrl) {
+      throw new Error(
+        "MONGO_URL is missing in .env or Render environment variables!"
+      );
+    }
+    app.set("mongo_user");
+
+    const connectionDb = await mongoose.connect(mongoUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log(`Mongo Connected | DB Host: ${connectionDb.connection.host}`);
+    server.listen(app.get("port"), () => {
+      console.log(" Server LISTENING on port", app.get("port"));
+    });
+  } catch (error) {
+    console.error(" Error starting server:", error.message);
+    process.exit(1);
+  }
 };
 
 start();
