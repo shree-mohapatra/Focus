@@ -3,6 +3,7 @@
   height: 100vh;
   background:url("/public/background.png");
   background-size: cover;
+  background-position: center;
   color: white;
 }
 
@@ -65,6 +66,12 @@
   width: auto;
 }
 
+
+button, svg {
+  cursor: pointer;
+}
+
+
 .navBar {
   display: flex;
   align-items: center;
@@ -99,4 +106,73 @@
   width: 30vw;
   height: auto;
   border-radius: 20px;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .landingMainContainer {
+    padding-inline: 1.5rem;
+  }
+
+  .landingMainContainer > div:nth-child(2) img {
+    height: 50vh;
+  }
+
+  .meetContainer {
+    gap: 5vw;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .landingContainer nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .landingContainer nav .navlist {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .landingMainContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .landingMainContainer > div:nth-child(1) {
+    font-size: 1.4rem;
+  }
+
+  .landingMainContainer > div:nth-child(2) img {
+    height: 40vh;
+    margin-bottom: 1.5rem;
+  }
+
+  .meetContainer {
+    flex-direction: column;
+    height: auto;
+    gap: 2rem;
+  }
+
+  .rightPanel > img {
+    width: 80vw;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .landingContainer nav h2 {
+    font-size: 1.8rem;
+  }
+
+  .landingContainer nav .navlist {
+    font-size: 1.1rem;
+  }
+
+  .landingMainContainer > div:nth-child(1) div[role='button'] a {
+    font-size: 1.2rem;
+  }
 }
