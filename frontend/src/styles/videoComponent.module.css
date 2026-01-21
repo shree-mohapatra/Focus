@@ -1,66 +1,80 @@
 .meetVideoContainer {
   position: relative;
+  width: 100%;
   height: 100vh;
   background-color: rgb(2, 2, 51);
   overflow: hidden;
 }
 
-/* Small self video */
+/* ======================
+   SELF VIDEO
+====================== */
 .meetUserVideo {
   position: absolute;
-  bottom: 12vh;
+  bottom: 90px; /* above buttons */
   left: 10px;
-  height: 22vh;
-  border-radius: 20px;
-  z-index: 3;
+  height: 18vh;
+  border-radius: 16px;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-/* Main video grid */
+/* ======================
+   MAIN VIDEOS
+====================== */
 .conferenceView {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 12px;
   padding: 12px;
-  justify-content: center;
   flex-wrap: wrap;
+  height: calc(100vh - 140px); /* space for buttons */
 }
 
 .conferenceView video {
   width: 32vw;
-  height: 48vh;
-  min-width: 280px;
-  border-radius: 20px;
+  height: 42vh;
+  min-width: 260px;
+  border-radius: 18px;
   object-fit: cover;
 }
 
-/* Bottom controls */
+/* ======================
+   BOTTOM CONTROLS
+====================== */
 .buttonContainers {
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  padding: 10px;
-  text-align: center;
-  background: linear-gradient(
-    to top,
-    rgba(2, 2, 51, 0.8),
-    transparent
-  );
+  height: 70px;
+  background: rgba(2, 2, 51, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 10;
 }
 
 .buttonContainers svg {
-  font-size: 3rem;
+  font-size: 2.6rem;
+  color: white;
 }
 
-/* Chat panel */
+/* ======================
+   CHAT PANEL
+====================== */
 .chatRoom {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
   width: 30vw;
-  height: 90vh;
+  height: 100vh;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1rem;
-  z-index: 4;
+  z-index: 8;
 }
 
 .chatContainer {
@@ -74,11 +88,9 @@
   width: 100%;
 }
 
-/* =======================
-   RESPONSIVE
-======================= */
-
-/* Tablets */
+/* ======================
+   TABLET
+====================== */
 @media (max-width: 1024px) {
   .conferenceView video {
     width: 80vw;
@@ -90,40 +102,57 @@
   }
 }
 
-/* Mobile */
+/* ======================
+   MOBILE FIX (CRITICAL)
+====================== */
 @media (max-width: 768px) {
-  .meetUserVideo {
-    height: 18vh;
-    bottom: 14vh;
-  }
-
+  /* Videos stack properly */
   .conferenceView {
     flex-direction: column;
-    align-items: center;
+    height: calc(100vh - 160px);
+    padding-bottom: 80px;
   }
 
   .conferenceView video {
-    width: 90vw;
+    width: 95vw;
+    height: 40vh;
   }
 
+  /* Self video floats */
+  .meetUserVideo {
+    height: 14vh;
+    bottom: 90px;
+    left: 10px;
+  }
+
+  /* Buttons ALWAYS visible */
+  .buttonContainers {
+    height: 70px;
+  }
+
+  /* Chat becomes bottom sheet */
   .chatRoom {
-    position: fixed;
+    width: 100vw;
+    height: 65vh;
     bottom: 0;
     top: auto;
-    right: 0;
-    width: 100vw;
-    height: 70vh;
     border-radius: 20px 20px 0 0;
+  }
+}
+
+/* ======================
+   SMALL PHONES
+====================== */
+@media (max-width: 480px) {
+  .conferenceView video {
+    height: 36vh;
+  }
+
+  .meetUserVideo {
+    height: 12vh;
   }
 
   .buttonContainers svg {
     font-size: 2.2rem;
-  }
-}
-
-/* Small Phones */
-@media (max-width: 480px) {
-  .meetUserVideo {
-    height: 16vh;
   }
 }
