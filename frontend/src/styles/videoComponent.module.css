@@ -11,12 +11,12 @@
 ====================== */
 .meetUserVideo {
   position: absolute;
-  bottom: 90px; /* above buttons */
+  bottom: 90px;
   left: 10px;
   height: 18vh;
   border-radius: 16px;
   z-index: 5;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 /* ======================
@@ -29,7 +29,7 @@
   gap: 12px;
   padding: 12px;
   flex-wrap: wrap;
-  height: calc(100vh - 140px); /* space for buttons */
+  height: calc(100vh - 140px);
 }
 
 .conferenceView video {
@@ -41,7 +41,7 @@
 }
 
 /* ======================
-   BOTTOM CONTROLS
+   BOTTOM CONTROLS (DESKTOP)
 ====================== */
 .buttonContainers {
   position: fixed;
@@ -72,20 +72,26 @@
   width: 30vw;
   height: 100vh;
   background-color: white;
-  border-radius: 0;
   padding: 1rem;
   z-index: 8;
 }
 
 .chatContainer {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
+.chattingDisplay {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
 .chattingArea {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 /* ======================
@@ -103,14 +109,12 @@
 }
 
 /* ======================
-   MOBILE FIX (CRITICAL)
+   MOBILE (CRITICAL FIX)
 ====================== */
 @media (max-width: 768px) {
-  /* Videos stack properly */
   .conferenceView {
     flex-direction: column;
-    height: calc(100vh - 160px);
-    padding-bottom: 80px;
+    height: calc(100vh - 120px);
   }
 
   .conferenceView video {
@@ -118,25 +122,26 @@
     height: 40vh;
   }
 
-  /* Self video floats */
   .meetUserVideo {
     height: 14vh;
-    bottom: 90px;
-    left: 10px;
-  }
-
-  /* Buttons ALWAYS visible */
-  .buttonContainers {
-    height: 70px;
+    bottom: 100px;
   }
 
   /* Chat becomes bottom sheet */
   .chatRoom {
     width: 100vw;
-    height: 65vh;
+    height: 70vh;
     bottom: 0;
     top: auto;
     border-radius: 20px 20px 0 0;
+  }
+
+  /* Buttons move BELOW message input */
+  .mobileButtons {
+    position: static !important;
+    background: rgb(2, 2, 51);
+    padding: 10px 0;
+    justify-content: space-evenly;
   }
 }
 
