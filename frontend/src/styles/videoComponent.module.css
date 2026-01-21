@@ -1,76 +1,85 @@
-.meetVideoContainer{
-  position:  relative;
+.meetVideoContainer {
+  position: relative;
   height: 100vh;
   background-color: rgb(2, 2, 51);
   overflow: hidden;
 }
 
-.meetUserVideo{
+/* Small self video */
+.meetUserVideo {
   position: absolute;
-  bottom: 10vh;
-  height: 25vh;
-  width: auto;
+  bottom: 12vh;
   left: 10px;
+  height: 22vh;
   border-radius: 20px;
-  z-index: 2;
+  z-index: 3;
 }
 
-.conferenceView{
+/* Main video grid */
+.conferenceView {
   display: flex;
-  padding: 10px;
-  gap: 10px;
+  gap: 12px;
+  padding: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.conferenceView video{
-  width: 35vw;
-  height: 50vh;
-  min-width: 30vw;
+.conferenceView video {
+  width: 32vw;
+  height: 48vh;
+  min-width: 280px;
   border-radius: 20px;
   object-fit: cover;
 }
 
-.buttonContainers{
+/* Bottom controls */
+.buttonContainers {
   position: absolute;
-  width: 100vw;
   bottom: 0;
-  text-align: center;
+  width: 100%;
   padding: 10px;
+  text-align: center;
+  background: linear-gradient(
+    to top,
+    rgba(2, 2, 51, 0.8),
+    transparent
+  );
 }
 
-.buttonContainers svg{
+.buttonContainers svg {
   font-size: 3rem;
 }
-.chatRoom{
+
+/* Chat panel */
+.chatRoom {
   position: absolute;
-  height: 90vh;
   right: 10px;
-  top:5px;
-  background-color: white;
-  border-radius: 10px;
+  top: 10px;
   width: 30vw;
-  padding-inline: 20px;
-  z-index: 3;
+  height: 90vh;
+  background-color: white;
+  border-radius: 12px;
+  padding: 1rem;
+  z-index: 4;
 }
 
-.chatContainer{
+.chatContainer {
   position: relative;
   height: 100%;
 }
 
-.chattingArea{
+.chattingArea {
   position: absolute;
-  bottom:0;
+  bottom: 0;
   width: 100%;
- 
 }
+
+/* =======================
+   RESPONSIVE
+======================= */
 
 /* Tablets */
 @media (max-width: 1024px) {
-  .conferenceView {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .conferenceView video {
     width: 80vw;
     height: auto;
@@ -84,8 +93,8 @@
 /* Mobile */
 @media (max-width: 768px) {
   .meetUserVideo {
-    height: 20vh;
-    bottom: 12vh;
+    height: 18vh;
+    bottom: 14vh;
   }
 
   .conferenceView {
@@ -95,16 +104,15 @@
 
   .conferenceView video {
     width: 90vw;
-    height: auto;
   }
 
   .chatRoom {
     position: fixed;
-    width: 100vw;
-    height: 70vh;
     bottom: 0;
     top: auto;
     right: 0;
+    width: 100vw;
+    height: 70vh;
     border-radius: 20px 20px 0 0;
   }
 
@@ -116,6 +124,6 @@
 /* Small Phones */
 @media (max-width: 480px) {
   .meetUserVideo {
-    height: 18vh;
+    height: 16vh;
   }
 }
